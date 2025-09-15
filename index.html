@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TravelStay - حجوزات السفر والسكن</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="loading" id="loading">
+        <div class="spinner"></div>
+    </div>
+
+    <nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-hotel me-2"></i>TravelStay
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">الرئيسية</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#services">الخدمات</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#featured">العروض المميزة</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#student">السكن الطلابي</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#map">الخريطة</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">اتصل بنا</a>
+                    </li>
+                </ul>
+                
+                <div class="d-flex">
+                    <button class="btn btn-auth" id="loginBtn">تسجيل دخول</button>
+                    <button class="btn btn-auth" id="registerBtn">إنشاء حساب</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <div class="hero-content" data-aos="fade-right">
+                        <h1>اكتشف أفضل أماكن الإقامة في مصر</h1>
+                        <p>استمتع بتجربة سفر لا تُنسى مع خيارات سكنية فاخرة تناسب جميع الأذواق والميزانيات</p>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="search-card" data-aos="fade-left" data-aos-delay="200">
+                        <h4 class="mb-4 text-center fw-bold">ابحث عن إقامتك المثالية</h4>
+                        <form id="searchForm">
+                            <div class="row g-3">
+                                <div class="col-12">
+                                    <div class="input-group">
+                                        <span class="input-group-text bg-transparent border-end-0">
+                                            <i class="fas fa-map-marker-alt text-primary"></i>
+                                        </span>
+                                        <input type="text" class="form-control form-control-lg border-start-0" id="destination" placeholder="أين تريد أن تذهب؟" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="input-group">
+                                        <span class="input-group-text bg-transparent border-end-0">
+                                            <i class="fas fa-calendar-alt text-primary"></i>
+                                        </span>
+                                        <input type="text" class="form-control form-control-lg border-start-0" id="checkInDate" placeholder="تاريخ الوصول">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="input-group">
+                                        <span class="input-group-text bg-transparent border-end-0">
+                                            <i class="fas fa-calendar-alt text-primary"></i>
+                                        </span>
+                                        <input type="text" class="form-control form-control-lg border-start-0" id="checkOutDate" placeholder="تاريخ المغادرة">
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="input-group">
+                                        <span class="input-group-text bg-transparent border-end-0">
+                                            <i class="fas fa-user text-primary"></i>
+                                        </span>
+                                        <select class="form-select form-select-lg border-start-0" id="guests">
+                                            <option selected value="0">عدد الضيوف</option>
+                                            <option value="1">1 بالغ</option>
+                                            <option value="2">2 بالغين</option>
+                                            <option value="3">3 بالغين</option>
+                                            <option value="4">4+ بالغين</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-search btn-lg w-100" id="searchBtn">
+                                        <i class="fas fa-search me-2"></i>ابحث الآن
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-5" id="services" style="margin-top: 80px;">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <h2>خدماتنا المتميزة</h2>
+                <p>نوفر لك مجموعة شاملة من خيارات الإقامة الفاخرة والمريحة في جميع أنحاء مصر</p>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="service-img">
+                            <img src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&w=800" alt="فنادق فاخرة" class="img-fluid">
+                            <div class="service-overlay">
+                                <i class="fas fa-hotel"></i>
+                            </div>
+                        </div>
+                        <div class="service-content">
+                            <h3>الفنادق الفاخرة</h3>
+                            <p>استمتع بإقامة استثنائية في أرقى الفنادق المصرية مع خدمات عالمية المستوى وإطلالات خلابة</p>
+                            <button class="btn btn-service">اكتشف المزيد</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="service-img">
+                            <img src="https://images.unsplash.com/photo-1555854877-bab0e564b8d5?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&w=800" alt="بيوت الشباب" class="img-fluid">
+                            <div class="service-overlay">
+                                <i class="fas fa-users"></i>
+                            </div>
+                        </div>
+                        <div class="service-content">
+                            <h3>بيوت الشباب العصرية</h3>
+                            <p>خيار مثالي للمسافرين الشباب مع أجواء حيوية وتجربة اجتماعية فريدة بأسعار مناسبة</p>
+                            <button class="btn btn-service">اكتشف المزيد</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+                        <div class="service-img">
+                            <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&w=800" alt="السكن المحلي" class="img-fluid">
+                            <div class="service-overlay">
+                                <i class="fas fa-home"></i>
+                            </div>
+                        </div>
+                        <div class="service-content">
+                            <h3>السكن المحلي الأصيل</h3>
+                            <p>اختبر الحياة المحلية الحقيقية مع عائلات مضيافة تشاركك تراث وثقافة المنطقة</p>
+                            <button class="btn btn-service">اكتشف المزيد</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-5 bg-light" id="featured">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <h2>العروض المميزة</h2>
+                <p>اختيارات مميزة من أفضل أماكن الإقامة في مصر بأسعار لا تقاوم</p>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="property-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="property-img">
+                            <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&w=800" alt="منتجع شرم الشيخ" class="img-fluid">
+                            <div class="property-badge">أفضل عرض</div>
+                        </div>
+                        <div class="property-content">
+                            <h3 class="property-title">منتجع شرم الشيخ</h3>
+                            <div class="property-features">
+                                <div class="feature">
+                                    <i class="fas fa-bed"></i>
+                                    <span>غرفة مزدوجة</span>
+                                </div>
+                                <div class="feature">
+                                    <i class="fas fa-utensils"></i>
+                                    <span>إفطار مجاني</span>
+                                </div>
+                                <div class="feature">
+                                    <i class="fas fa-car"></i>
+                                    <span>موقف مجاني</span>
+                                </div>
+                            </div>
+                            <div class="property-price">850 ج.م / ليلة</div>
+                            <button class="btn btn-book book-btn">احجز الآن</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="property-card" data-aos="fade-up" data-aos-delay="300">
+                        <div class="property-img">
+                            <img src="https://www.ahstatic.com/photos/1661_ho_02_p_1024x768.jpg" alt="فندق الأقصر" class="img-fluid">
+                            <div class="property-badge">جديد</div>
+                        </div>
+                        <div class="property-content">
+                            <h3 class="property-title">فندق الأقصر التاريخي</h3>
+                            <div class="property-features">
+                                <div class="feature">
+                                    <i class="fas fa-bed"></i>
+                                    <span>غرفة ديلوكس</span>
+                                </div>
+                                <div class="feature">
+                                    <i class="fas fa-spa"></i>
+                                    <span>سبا ومنتجع</span>
+                                </div>
+                                <div class="feature">
+                                    <i class="fas fa-concierge-bell"></i>
+                                    <span>خدمة غرف 24/7</span>
+                                </div>
+                            </div>
+                            <div class="property-price">950 ج.م / ليلة</div>
+                            <button class="btn btn-book book-btn">احجز الآن</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="property-card" data-aos="fade-up" data-aos-delay="500">
+                        <div class="property-img">
+                            <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&w=800" alt="فندق الجونة" class="img-fluid">
+                            <div class="property-badge">عرض خاص</div>
+                        </div>
+                        <div class="property-content">
+                            <h3 class="property-title">منتجع الجونة الفاخر</h3>
+                            <div class="property-features">
+                                <div class="feature">
+                                    <i class="fas fa-bed"></i>
+                                    <span>جناح فاخر</span>
+                                </div>
+                                <div class="feature">
+                                    <i class="fas fa-swimming-pool"></i>
+                                    <span>مسبح خاص</span>
+                                </div>
+                                <div class="feature">
+                                    <i class="fas fa-wifi"></i>
+                                    <span>واي فاي مجاني</span>
+                                </div>
+                            </div>
+                            <div class="property-price">1,200 ج.م / ليلة</div>
+                            <button class="btn btn-book book-btn">احجز الآن</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-5" id="student">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <h2>السكن الطلابي المتميز</h2>
+                <p>مساكن طلابية حديثة ومجهزة بالكامل لضمان بيئة مثالية للدراسة والراحة</p>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="student-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="student-img">
+                            <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&w=800" alt="سكن طلابي فردي" class="img-fluid">
+                        </div>
+                        <div class="student-content">
+                            <h3 class="student-title">غرفة فردية مجهزة</h3>
+                            <div class="student-features">
+                                <div class="student-feature">
+                                    <i class="fas fa-bed"></i>
+                                    <span>غرفة فردية</span>
+                                </div>
+                                <div class="student-feature">
+                                    <i class="fas fa-wifi"></i>
+                                    <span>إنترنت عالي السرعة</span>
+                                </div>
+                            </div>
+                            <div class="student-price">1,500 ج.م / شهر</div>
+                            <button class="btn btn-book book-btn">تفاصيل أكثر</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="student-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="student-img">
+                            <img src="https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&w=800" alt="شقة مشتركة" class="img-fluid">
+                        </div>
+                        <div class="student-content">
+                            <h3 class="student-title">شقة مشتركة للطالبات</h3>
+                            <div class="student-features">
+                                <div class="student-feature">
+                                    <i class="fas fa-users"></i>
+                                    <span>3 طالبات</span>
+                                </div>
+                                <div class="student-feature">
+                                    <i class="fas fa-utensils"></i>
+                                    <span>مطبخ مشترك</span>
+                                </div>
+                            </div>
+                            <div class="student-price">900 ج.م / شهر</div>
+                            <button class="btn btn-book book-btn">تفاصيل أكثر</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="student-card" data-aos="fade-up" data-aos-delay="300">
+                        <div class="student-img">
+                            <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&w=800" alt="استوديو طلابي" class="img-fluid">
+                        </div>
+                        <div class="student-content">
+                            <h3 class="student-title">استوديو فاخر للطلاب</h3>
+                            <div class="student-features">
+                                <div class="student-feature">
+                                    <i class="fas fa-home"></i>
+                                    <span>استوديو مستقل</span>
+                                </div>
+                                <div class="student-feature">
+                                    <i class="fas fa-car"></i>
+                                    <span>موقف سيارات</span>
+                                </div>
+                            </div>
+                            <div class="student-price">2,200 ج.م / شهر</div>
+                            <button class="btn btn-book book-btn">تفاصيل أكثر</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-5 bg-light" id="map">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <h2>اكتشف المواقع على الخريطة</h2>
+                <p>استكشف جميع خيارات الإقامة في مواقعها الفعلية على الخريطة التفاعلية</p>
+            </div>
+            
+            <div class="map-container" data-aos="fade-up">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3453.649069542001!2d31.23351918488426!3d30.044419981881525!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x145841f5e1f1e1e1%3A0x1e1e1e1e1e1e1e1e!2sCairo%2C%20Egypt!5e0!3m2!1sen!2seg!4v1695066928096!5m2!1sen!2seg"
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-3 col-md-6">
+                    <h3 class="footer-title">عن TravelStay</h3>
+                    <p>منصة رائدة في مجال حجوزات السفر والإقامة في مصر، نوفر تجربة استثنائية تجمع بين الفخامة والراحة بأسعار تنافسية.</p>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <h3 class="footer-title">روابط سريعة</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">الرئيسية</a></li>
+                        <li><a href="#services">الخدمات</a></li>
+                        <li><a href="#featured">العروض المميزة</a></li>
+                        <li><a href="#student">السكن الطلابي</a></li>
+                        <li><a href="#map">الخريطة</a></li>
+                        <li><a href="#contact">اتصل بنا</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <h3 class="footer-title">خدمة العملاء</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">الأسئلة الشائعة</a></li>
+                        <li><a href="#">سياسة الخصوصية</a></li>
+                        <li><a href="#">شروط الاستخدام</a></li>
+                        <li><a href="#">طرق الدفع</a></li>
+                        <li><a href="#">إلغاء الحجز</a></li>
+                        <li><a href="#">الدعم الفني</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <h3 class="footer-title">معلومات الاتصال</h3>
+                    <div class="contact-info">
+                        <p class="mb-3">
+                            <i class="fas fa-map-marker-alt me-3" style="color: #f5576c;"></i>
+                            123 شارع التحرير، وسط البلد، القاهرة، مصر
+                        </p>
+                        <p class="mb-3">
+                            <i class="fas fa-phone me-3" style="color: #f5576c;"></i>
+                            +20 100 123 4567
+                        </p>
+                        <p class="mb-3">
+                            <i class="fas fa-envelope me-3" style="color: #f5576c;"></i>
+                            info@travelstay.com
+                        </p>
+                        <p class="mb-0">
+                            <i class="fas fa-clock me-3" style="color: #f5576c;"></i>
+                            24/7 خدمة العملاء
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>© 2025 TravelStay.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/ar.js"></script>
+    
+    <script src="script.js"></script>
+</body>
+</html>
