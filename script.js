@@ -186,7 +186,7 @@ document.querySelectorAll('.book-btn').forEach(button => {
         e.preventDefault();
         
         const card = this.closest('.property-card, .student-card');
-        const title = card.querySelector('.property-title, .student-title').textContent;
+        const title = card.querySelector('h3').textContent;
         const price = card.querySelector('.property-price, .student-price').textContent;
         
         Swal.fire({
