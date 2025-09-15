@@ -10,21 +10,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     
     <link rel="stylesheet" href="style.css">
-    <style>
-        .navbar-brand .icon-container {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1rem;
-            margin-top: -5px; 
-        }
-        .navbar-brand .icon-container i {
-            margin: 0;
-            font-size: 1rem;
-        }
-    </style>
 </head>
 <body>
     <div class="loading" id="loading">
@@ -34,11 +22,8 @@
     <nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
         <div class="container">
             <a class="navbar-brand" href="#">
-                  <div class="icon-container">
-                    <i class="fa-solid fa-bed"></i>
-                </div>
-                Mabeet
-              
+                <span class="mabeet-logo">Mabeet</span>
+                <i class="fa-solid fa-bed icon-small"></i>
             </a>
             
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -214,7 +199,7 @@
                             <div class="property-badge">أفضل عرض</div>
                         </div>
                         <div class="property-content">
-                            <h3 class="property-title">منتجع شرم الشيخ</h3>
+                            <h3>منتجع شرم الشيخ</h3>
                             <div class="property-features">
                                 <div class="feature">
                                     <i class="fas fa-bed"></i>
@@ -242,7 +227,7 @@
                             <div class="property-badge">جديد</div>
                         </div>
                         <div class="property-content">
-                            <h3 class="property-title">فندق الأقصر التاريخي</h3>
+                            <h3>فندق الأقصر التاريخي</h3>
                             <div class="property-features">
                                 <div class="feature">
                                     <i class="fas fa-bed"></i>
@@ -270,7 +255,7 @@
                             <div class="property-badge">عرض خاص</div>
                         </div>
                         <div class="property-content">
-                            <h3 class="property-title">منتجع الجونة الفاخر</h3>
+                            <h3>منتجع الجونة الفاخر</h3>
                             <div class="property-features">
                                 <div class="feature">
                                     <i class="fas fa-bed"></i>
@@ -308,7 +293,7 @@
                             <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&w=800" alt="سكن طلابي فردي" class="img-fluid">
                         </div>
                         <div class="student-content">
-                            <h3 class="student-title">غرفة فردية مجهزة</h3>
+                            <h3>غرفة فردية مجهزة</h3>
                             <div class="student-features">
                                 <div class="student-feature">
                                     <i class="fas fa-bed"></i>
@@ -331,7 +316,7 @@
                             <img src="https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&w=800" alt="شقة مشتركة" class="img-fluid">
                         </div>
                         <div class="student-content">
-                            <h3 class="student-title">شقة مشتركة للطالبات</h3>
+                            <h3>شقة مشتركة للطالبات</h3>
                             <div class="student-features">
                                 <div class="student-feature">
                                     <i class="fas fa-users"></i>
@@ -354,7 +339,7 @@
                             <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&w=800" alt="استوديو طلابي" class="img-fluid">
                         </div>
                         <div class="student-content">
-                            <h3 class="student-title">استوديو فاخر للطلاب</h3>
+                            <h3>استوديو فاخر للطلاب</h3>
                             <div class="student-features">
                                 <div class="student-feature">
                                     <i class="fas fa-home"></i>
@@ -396,7 +381,7 @@
         <div class="container">
             <div class="row g-4">
                 <div class="col-lg-3 col-md-6">
-                    <h3 class="footer-title">عن Mabeet</h3>
+                    <h3>عن Mabeet</h3>
                     <p>منصة رائدة في مجال حجوزات السفر والإقامة في مصر، نوفر تجربة استثنائية تجمع بين الفخامة والراحة بأسعار تنافسية.</p>
                     <div class="social-icons">
                         <a href="#" class="social-icon">
@@ -415,7 +400,7 @@
                 </div>
                 
                 <div class="col-lg-3 col-md-6">
-                    <h3 class="footer-title">روابط سريعة</h3>
+                    <h3>روابط سريعة</h3>
                     <ul class="footer-links">
                         <li><a href="#home">الرئيسية</a></li>
                         <li><a href="#services">الخدمات</a></li>
@@ -427,7 +412,7 @@
                 </div>
                 
                 <div class="col-lg-3 col-md-6">
-                    <h3 class="footer-title">خدمة العملاء</h3>
+                    <h3>خدمة العملاء</h3>
                     <ul class="footer-links">
                         <li><a href="#">الأسئلة الشائعة</a></li>
                         <li><a href="#">سياسة الخصوصية</a></li>
@@ -439,7 +424,7 @@
                 </div>
                 
                 <div class="col-lg-3 col-md-6">
-                    <h3 class="footer-title">معلومات الاتصال</h3>
+                    <h3>معلومات الاتصال</h3>
                     <div class="contact-info">
                         <p class="mb-3">
                             <i class="fas fa-map-marker-alt me-3" style="color: #f5576c;"></i>
@@ -462,7 +447,7 @@
             </div>
             
             <div class="copyright">
-                <p>© 2025 Mabeet.</p>
+                <p>© 2025 Mabeet. جميع الحقوق محفوظة.</p>
             </div>
         </div>
     </footer>
@@ -470,6 +455,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/ar.js"></script>
     
     <script src="script.js"></script>
 </body>

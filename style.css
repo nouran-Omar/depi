@@ -1,3 +1,26 @@
+.navbar-brand .icon-small {
+    font-size: 1.1rem;
+    display: block;
+    text-align: center;
+    line-height: 1;
+    margin-top: -5px;
+}
+
+.navbar-brand .mabeet-logo {
+    display: block;
+}
+
+.navbar-brand {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-weight: 900;
+    font-size: 1.8rem;
+    color: white !important;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
 :root {
     --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
@@ -19,8 +42,8 @@ body {
     overflow-x: hidden;
 }
 
-/* Header Styles */
 .navbar {
+    height: 70px;
     background: var(--primary-gradient) !important;
     backdrop-filter: blur(10px);
     box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
@@ -30,13 +53,7 @@ body {
 
 .navbar.scrolled {
     background: rgba(102, 126, 234, 0.95) !important;
-}
-
-.navbar-brand {
-    font-weight: 900;
-    font-size: 1.8rem;
-    color: white !important;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    height: 60px;
 }
 
 .navbar-nav .nav-link {
@@ -62,7 +79,6 @@ body {
     width: 100%;
 }
 
-/* Removed hover animation for .btn-auth */
 .btn-auth {
     background: white;
     color: #667eea;
@@ -79,7 +95,6 @@ body {
     color: #667eea;
 }
 
-/* Hero Section */
 .hero {
     height: 100vh;
     background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), 
@@ -132,7 +147,6 @@ body {
     border: 1px solid rgba(255,255,255,0.2);
 }
 
-/* تحسين حقول البحث */
 .search-card .form-control, 
 .search-card .form-select {
     border-radius: 10px;
@@ -158,7 +172,6 @@ body {
     border-right: 1px solid #ced4da !important;
 }
 
-/* Removed hover animation for .btn-search */
 .btn-search {
     background: var(--secondary-gradient);
     border: none;
@@ -174,7 +187,6 @@ body {
     color: white;
 }
 
-/* Section Titles */
 .section-title {
     text-align: center;
     margin-bottom: 4rem;
@@ -198,7 +210,6 @@ body {
     margin: 0 auto;
 }
 
-/* Service Cards */
 .service-card {
     background: white;
     border-radius: 20px;
@@ -230,7 +241,6 @@ body {
     transform: scale(1.1);
 }
 
-/* Removed icon animation */
 .service-overlay {
     position: absolute;
     top: 0;
@@ -271,7 +281,6 @@ body {
     margin-bottom: 1.5rem;
 }
 
-/* Removed hover animation for .btn-service */
 .btn-service {
     background: var(--success-gradient);
     color: white;
@@ -287,7 +296,6 @@ body {
     color: white;
 }
 
-/* Featured Properties */
 .property-card {
     background: white;
     border-radius: 20px;
@@ -370,7 +378,6 @@ body {
     margin-bottom: 1.5rem;
 }
 
-/* Removed hover animation for .btn-book */
 .btn-book {
     background: var(--primary-gradient);
     color: white;
@@ -386,7 +393,6 @@ body {
     color: white;
 }
 
-/* Student Housing */
 .student-card {
     background: white;
     border-radius: 20px;
@@ -453,7 +459,6 @@ body {
     margin-bottom: 1rem;
 }
 
-/* Map Section */
 .map-container {
     height: 500px;
     border-radius: 20px;
@@ -473,7 +478,6 @@ body {
     filter: grayscale(0);
 }
 
-/* Footer */
 footer {
     background: var(--dark-gradient);
     color: white;
@@ -520,7 +524,6 @@ footer {
     padding-right: 10px;
 }
 
-/* Removed hover animation for .social-icon */
 .social-icons {
     display: flex;
     gap: 15px;
@@ -552,7 +555,6 @@ footer {
     font-size: 0.9rem;
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
     .hero h1 {
         font-size: 2.5rem;
@@ -571,7 +573,6 @@ footer {
     }
 }
 
-/* Loading Animation */
 .loading {
     position: fixed;
     top: 0;

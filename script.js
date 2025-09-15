@@ -1,11 +1,9 @@
-// Loading Screen
 window.addEventListener('load', function() {
     setTimeout(() => {
         document.getElementById('loading').classList.add('hide');
     }, 1500);
 });
 
-// Initialize AOS
 AOS.init({
     duration: 1000,
     once: true,
@@ -13,7 +11,6 @@ AOS.init({
     easing: 'ease-in-out'
 });
 
-// Navbar scroll effect
 window.addEventListener('scroll', function() {
     const navbar = document.getElementById('mainNav');
     if (window.scrollY > 50) {
@@ -23,7 +20,6 @@ window.addEventListener('scroll', function() {
     }
 });
 
-// Smooth scrolling for navigation links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
@@ -37,12 +33,10 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// تهيئة تقويم التواريخ
 const today = new Date();
 const tomorrow = new Date(today);
 tomorrow.setDate(tomorrow.getDate() + 1);
 
-// تهيئة التقويم باللغة العربية
 flatpickr.localize(flatpickr.l10ns.ar);
 
 const checkInDate = flatpickr("#checkInDate", {
@@ -51,10 +45,7 @@ const checkInDate = flatpickr("#checkInDate", {
     defaultDate: today,
     locale: "ar",
     onChange: function(selectedDates, dateStr, instance) {
-        // عند اختيار تاريخ الوصول، تحديث تاريخ المغادرة ليكون على الأقل يوم بعد تاريخ الوصول
         checkOutDate.set("minDate", new Date(selectedDates[0].getTime() + 86400000));
-        
-        // إذا كان تاريخ المغادرة قبل تاريخ الوصول الجديد، قم بتحديثه
         if (checkOutDate.selectedDates[0] <= selectedDates[0]) {
             const newCheckOut = new Date(selectedDates[0].getTime() + 86400000);
             checkOutDate.setDate(newCheckOut);
@@ -63,18 +54,63 @@ const checkInDate = flatpickr("#checkInDate", {
 });
 
 const checkOutDate = flatpickr("#checkOutDate", {
-    minDate: new Date(today.getTime() + 86400000), // غداً كحد أدنى
+    minDate: new Date(today.getTime() + 86400000),
     dateFormat: "Y-m-d",
     defaultDate: tomorrow,
     locale: "ar"
 });
 
-// معالجة نموذج البحث (تم تعطيله بناءً على طلبك)
 document.getElementById('searchForm').addEventListener('submit', function(e) {
     e.preventDefault();
+    
+    const destination = document.getElementById('destination').value;
+    const checkIn = document.getElementById('checkInDate').value;
+    const checkOut = document.getElementById('checkOutDate').value;
+    const guests = document.getElementById('guests').value;
+    
+    if (!destination || guests === '0') {
+        Swal.fire({
+            title: 'بيانات ناقصة',
+            text: 'يرجى ملء حقل الوجهة واختيار عدد الضيوف',
+            icon: 'warning',
+            confirmButtonColor: '#667eea'
+        });
+        return;
+    }
+    
+    Swal.fire({
+        title: 'جاري البحث...',
+        text: `يتم البحث عن أماكن الإقامة في ${destination}`,
+        icon: 'info',
+        showConfirmButton: false,
+        timer: 2000,
+        timerProgressBar: true,
+        background: '#fff',
+        backdrop: 'rgba(102, 126, 234, 0.4)'
+    }).then(() => {
+        Swal.fire({
+            title: 'تم العثور على نتائج!',
+            html: `
+                <div style="text-align: right; direction: rtl;">
+                    <p><strong>الوجهة:</strong> ${destination}</p>
+                    <p><strong>تاريخ الوصول:</strong> ${checkIn || 'غير محدد'}</p>
+                    <p><strong>تاريخ المغادرة:</strong> ${checkOut || 'غير محدد'}</p>
+                    <p><strong>عدد الضيوف:</strong> ${guests} أشخاص</p>
+                    <hr>
+                    <p class="mt-3">وجدنا 127 خيار إقامة يناسب معايير البحث الخاصة بك</p>
+                </div>
+            `,
+            icon: 'success',
+            confirmButtonText: 'عرض النتائج',
+            cancelButtonText: 'تعديل البحث',
+            showCancelButton: true,
+            background: '#fff',
+            confirmButtonColor: '#667eea',
+            cancelButtonColor: '#6c757d'
+        });
+    });
 });
 
-// Login button
 document.getElementById('loginBtn').addEventListener('click', function() {
     Swal.fire({
         title: 'تسجيل الدخول',
@@ -108,7 +144,6 @@ document.getElementById('loginBtn').addEventListener('click', function() {
     });
 });
 
-// Register button
 document.getElementById('registerBtn').addEventListener('click', function() {
     Swal.fire({
         title: 'إنشاء حساب جديد',
@@ -138,7 +173,7 @@ document.getElementById('registerBtn').addEventListener('click', function() {
         if (result.isConfirmed) {
             Swal.fire({
                 title: 'تم إنشاء الحساب بنجاح!',
-                text: 'مرحباً بك في TravelStay',
+                text: 'مرحباً بك في Mabeet',
                 icon: 'success',
                 confirmButtonColor: '#667eea'
             });
@@ -146,7 +181,6 @@ document.getElementById('registerBtn').addEventListener('click', function() {
     });
 });
 
-// Book buttons
 document.querySelectorAll('.book-btn').forEach(button => {
     button.addEventListener('click', function(e) {
         e.preventDefault();
@@ -184,7 +218,6 @@ document.querySelectorAll('.book-btn').forEach(button => {
     });
 });
 
-// Service buttons
 document.querySelectorAll('.btn-service').forEach(button => {
     button.addEventListener('click', function() {
         const serviceName = this.closest('.service-card').querySelector('h3').textContent;
@@ -199,7 +232,6 @@ document.querySelectorAll('.btn-service').forEach(button => {
     });
 });
 
-// Add parallax effect to hero
 window.addEventListener('scroll', function() {
     const scrolled = window.pageYOffset;
     const hero = document.querySelector('.hero');
