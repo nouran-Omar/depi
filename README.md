@@ -93,7 +93,7 @@ mabeet/
 ## 🚀 How to Run
 1. Clone the repository:
    ```bash
-   git clone https://github.com/username/mabeet.git
+   git clone (https://github.com/nouran-Omar/depi/)
    ```
 2. Open `index.html` in any modern browser.
 3. Done! 🎉
@@ -101,4 +101,4 @@ mabeet/
 ---
 
 ## 👩‍💻 Developer
-Developed with ❤️ by **Nouran Omar**
+Developed with ❤️ by **Mabeet**
