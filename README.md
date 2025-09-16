@@ -93,7 +93,7 @@ mabeet/
 ## 🚀 How to Run
 1. Clone the repository:
    ```bash
-   git clone (https://github.com/nouran-Omar/depi/)
+   git clone https://github.com/nouran-Omar/depi.git
    ```
 2. Open `index.html` in any modern browser.
 3. Done! 🎉
