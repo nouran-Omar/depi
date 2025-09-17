@@ -460,8 +460,15 @@
             font-size: 0.9rem;
         }
         @media (max-width: 768px) {
+            .hero{
+                height: 100%;
+            }
             .hero h1 {
                 font-size: 2.5rem;
+            }
+            .navbar-collapse{
+                background-color: #667eea !important;
+                padding: 10px;
             }
             .hero p {
                 font-size: 1.1rem;
@@ -471,6 +478,9 @@
             }
             .search-card {
                 padding: 1.5rem;
+            }
+            .hero-content{
+                margin-top: 90px;
             }
         }
         .loading {
@@ -525,6 +535,7 @@
             font-weight: 900;
             font-size: 1.2rem;
             color: white !important;
+            
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
             padding-top: 15px;
             padding-bottom: 10px;
